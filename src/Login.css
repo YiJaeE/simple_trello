@@ -46,4 +46,5 @@ input {
   color: white;
   padding: 10px;
   font-size: 1rem;
+  cursor: pointer;
 }

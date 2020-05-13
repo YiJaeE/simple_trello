@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Board.css';
 
-const Board = ({ setIsLogin, userId }) => {
+const Board = ({ isLogin, setIsLogin, userId, setUserId }) => {
   const userLogOut = () => {
     alert(`${userId}님 안녕히 가세요`);
     setIsLogin(false);
