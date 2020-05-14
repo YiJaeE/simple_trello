@@ -1,10 +1,12 @@
 .boardContainer {
   overflow-x: auto;
   white-space: nowrap;
-  /* width: 100%; */
 }
 
 header {
+  position: fixed;
+  left: 0;
+  right: 0;
   box-sizing: border-box;
   background-color: #10a630;
   padding: 20px 30px 20px 0;
@@ -20,6 +22,7 @@ header {
 }
 
 .inputBoard {
+  margin-top: 50px;
   padding: 25px;
 }
 
@@ -46,15 +49,29 @@ header {
 
 .boardSection {
   display: flex;
-  /* flex-direction: row;
-  flex-wrap: nowrap; */
+  flex-wrap: nowrap;
   padding: 50px 0 50px 50px;
   background-color: tan;
 }
 
 .boardCard {
+  position: relative;
   background-color: thistle;
   width: 250px;
   height: 100px;
   margin: 30px;
+  padding: 0;
+}
+
+.removeBtn {
+  border: none;
+  background-color: red;
+  position: absolute;
+  right: 0;
+}
+
+.inputTodo {
+  display: block;
+  position: absolute;
+  bottom: 0;
 }
