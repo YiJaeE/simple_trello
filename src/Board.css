@@ -1,3 +1,9 @@
+.boardContainer {
+  overflow-x: auto;
+  white-space: nowrap;
+  /* width: 100%; */
+}
+
 header {
   box-sizing: border-box;
   background-color: #10a630;
@@ -39,7 +45,10 @@ header {
 }
 
 .boardSection {
-  padding: 50px;
+  display: flex;
+  /* flex-direction: row;
+  flex-wrap: nowrap; */
+  padding: 50px 0 50px 50px;
   background-color: tan;
 }
 
@@ -47,4 +56,5 @@ header {
   background-color: thistle;
   width: 250px;
   height: 100px;
+  margin: 30px;
 }
