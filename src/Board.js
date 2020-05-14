@@ -4,12 +4,15 @@ import './Board.css';
 const Board = ({ userId, userLogOut }) => {
   const [boardTitle, setBoardTitle] = useState([]);
 
-  const [todo, setTodo] = useState([]);
+  const [todos, setTodos] = useState([]);
 
   const generateId = () =>
     boardTitle.length
       ? Math.max(...boardTitle.map((board) => board.id)) + 1
       : 1;
+
+  const generateKey = () =>
+    todos.length ? Math.max(...todos.map((todo) => todo.id)) + 1 : 100;
 
   const generateBoard = (e) => {
     const newBoard = {
@@ -28,14 +31,14 @@ const Board = ({ userId, userLogOut }) => {
   };
 
   const generateTodo = (e) => {
-    const newTodo = {
-      id: `Todo${generateId()}`,
+    const newTodos = {
+      id: generateKey(),
       content: e.target.value,
     };
     if (e.key === 'Enter') {
-      setTodo([...todo, newTodo]);
+      setTodos([...todos, newTodos]);
     }
-    console.log(todo);
+    console.log(todos);
   };
 
   return (
@@ -62,8 +65,8 @@ const Board = ({ userId, userLogOut }) => {
             <button type="button" className="removeBtn" onClick={removeBoard}>
               보드 지우기
             </button>
-            {todo.map(({ content, idx }) => (
-              <li key={idx}>{content}</li>
+            {todos.map(({ id, content }) => (
+              <li key={id}>{content}</li>
             ))}
             <input
               type="text"

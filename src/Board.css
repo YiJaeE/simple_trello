@@ -13,6 +13,7 @@ header {
   text-align: end;
   color: rgb(223, 223, 223);
   font-weight: 700;
+  z-index: 10;
 }
 
 .logout {
@@ -58,9 +59,10 @@ header {
   position: relative;
   background-color: thistle;
   width: 250px;
-  height: 100px;
+  height: 300px;
   margin: 30px;
   padding: 0;
+  list-style: none;
 }
 
 .removeBtn {

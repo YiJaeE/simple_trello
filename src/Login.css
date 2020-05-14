@@ -8,6 +8,10 @@
 }
 
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   box-sizing: border-box;
   background-color: #10a630;
   padding: 20px 30px 20px 0;
@@ -18,7 +22,7 @@ header {
 
 .container {
   width: 300px;
-  margin: 30px auto;
+  margin: 100px auto;
 }
 
 .form-container {
