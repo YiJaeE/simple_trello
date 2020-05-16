@@ -1,25 +1,49 @@
 import React, { useState } from 'react';
 import './Board.css';
 
-const Board = ({ userId, userLogOut }) => {
-  const [boardTitle, setBoardTitle] = useState([]);
+const initialState = [
+  {
+    id: 1,
+    title: '오늘 할 일',
+    todos: [
+      { id: 101, content: '집에 가기' },
+      { id: 102, content: '밥 먹기' },
+      { id: 103, content: '쀼세계 보기' },
+    ],
+  },
+];
 
-  const [todos, setTodos] = useState([]);
+const Board = ({ userId, userLogOut }) => {
+  const [boardTitle, setBoardTitle] = useState(initialState);
+  // const inputIdRef = useRef();
+  // const [todos, setTodos] = useState([]);
 
   const generateId = () =>
     boardTitle.length
       ? Math.max(...boardTitle.map((board) => board.id)) + 1
       : 1;
 
-  const generateKey = () =>
-    todos.length ? Math.max(...todos.map((todo) => todo.id)) + 1 : 100;
+  // const generateTodoId = () =>
+  //   boardTitle.todos.length
+  //     ? Math.max(...(boardTitle.todos.map((todo) => todo.id) + 1))
+  //     : boardTitle.id * 100;
+
+  // const generateTodoId = () =>
+  //   boardTitle.map((board) =>
+  //     board.todos.length
+  //       ? Math.max(...(board.todos.map((todo) => todo.id) + 1))
+  //       : board.id * 100,
+  //   );
+
+  // const generateKey = () =>
+  //   todos.length ? Math.max(...todos.map((todo) => todo.id)) + 1 : 100;
 
   const generateBoard = (e) => {
     const newBoard = {
       id: generateId(),
       title: e.target.value,
+      todos: [],
     };
-
     if (e.key === 'Enter') {
       setBoardTitle([...boardTitle, newBoard]);
     }
@@ -32,14 +56,27 @@ const Board = ({ userId, userLogOut }) => {
 
   const generateTodo = (e) => {
     const newTodos = {
-      id: generateKey(),
+      // id: generateTodoId(),
       content: e.target.value,
     };
     if (e.key === 'Enter') {
-      setTodos([...todos, newTodos]);
+      setBoardTitle([
+        ...boardTitle,
+        { todos: [...boardTitle.todos, newTodos] },
+      ]);
     }
-    console.log(todos);
   };
+
+  // const generateTodo = (e) => {
+  //   const newTodos = {
+  //     id: generateKey(),
+  //     content: e.target.value,
+  //   };
+  //   if (e.key === 'Enter') {
+  //     setTodos([...todos, newTodos]);
+  //   }
+  //   console.log(todos);
+  // };
 
   return (
     <div className="boardContainer">
@@ -59,14 +96,14 @@ const Board = ({ userId, userLogOut }) => {
         />
       </section>
       <section className="boardSection">
-        {boardTitle.map(({ id, title }) => (
+        {boardTitle.map(({ id, title, todos }) => (
           <ul id={id} key={`board${id}`} className="boardCard">
             {title}
             <button type="button" className="removeBtn" onClick={removeBoard}>
               보드 지우기
             </button>
-            {todos.map(({ id, content }) => (
-              <li key={id}>{content}</li>
+            {todos.map((todo, idx) => (
+              <li key={idx}>{todo.content}</li>
             ))}
             <input
               type="text"
