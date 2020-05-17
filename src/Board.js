@@ -1,82 +1,41 @@
 import React, { useState } from 'react';
 import './Board.css';
 
-const initialState = [
-  {
-    id: 1,
-    title: '오늘 할 일',
-    todos: [
-      { id: 101, content: '집에 가기' },
-      { id: 102, content: '밥 먹기' },
-      { id: 103, content: '쀼세계 보기' },
-    ],
-  },
-];
-
 const Board = ({ userId, userLogOut }) => {
-  const [boardTitle, setBoardTitle] = useState(initialState);
-  // const inputIdRef = useRef();
-  // const [todos, setTodos] = useState([]);
+  const [boards, setBoards] = useState([]);
+  const [todos, setTodos] = useState([]);
 
-  const generateId = () =>
-    boardTitle.length
-      ? Math.max(...boardTitle.map((board) => board.id)) + 1
-      : 1;
+  const generateBoardId = () =>
+    boards.length ? Math.max(...boards.map((board) => board.id)) + 1 : 1;
 
-  // const generateTodoId = () =>
-  //   boardTitle.todos.length
-  //     ? Math.max(...(boardTitle.todos.map((todo) => todo.id) + 1))
-  //     : boardTitle.id * 100;
-
-  // const generateTodoId = () =>
-  //   boardTitle.map((board) =>
-  //     board.todos.length
-  //       ? Math.max(...(board.todos.map((todo) => todo.id) + 1))
-  //       : board.id * 100,
-  //   );
-
-  // const generateKey = () =>
-  //   todos.length ? Math.max(...todos.map((todo) => todo.id)) + 1 : 100;
-
-  const generateBoard = (e) => {
-    const newBoard = {
-      id: generateId(),
+  const createBoard = (e) => {
+    const newBoards = {
+      id: generateBoardId(),
       title: e.target.value,
-      todos: [],
     };
     if (e.key === 'Enter') {
-      setBoardTitle([...boardTitle, newBoard]);
+      setBoards([...boards, newBoards]);
     }
   };
 
-  const removeBoard = ({ target }) => {
-    const id = +target.parentNode.id;
-    setBoardTitle(boardTitle.filter((board) => id !== board.id));
+  const removeBoard = (e) => {
+    const id = +e.target.parentNode.id;
+    setBoards(boards.filter((board) => board.id !== id));
+    setTodos(todos.filter((todo) => todo.boardId !== id));
   };
 
-  const generateTodo = (e) => {
+  const createTodo = (e) => {
+    const boardId = +e.target.parentNode.id;
+
     const newTodos = {
-      // id: generateTodoId(),
+      boardId: boardId,
+      id: Math.random(),
       content: e.target.value,
     };
     if (e.key === 'Enter') {
-      setBoardTitle([
-        ...boardTitle,
-        { todos: [...boardTitle.todos, newTodos] },
-      ]);
+      setTodos([...todos, newTodos]);
     }
   };
-
-  // const generateTodo = (e) => {
-  //   const newTodos = {
-  //     id: generateKey(),
-  //     content: e.target.value,
-  //   };
-  //   if (e.key === 'Enter') {
-  //     setTodos([...todos, newTodos]);
-  //   }
-  //   console.log(todos);
-  // };
 
   return (
     <div className="boardContainer">
@@ -92,24 +51,26 @@ const Board = ({ userId, userLogOut }) => {
           type="text"
           className="newInputBoard"
           placeholder="새로운 보드 제목을 작성하세요"
-          onKeyPress={(e) => generateBoard(e)}
+          onKeyPress={createBoard}
         />
       </section>
       <section className="boardSection">
-        {boardTitle.map(({ id, title, todos }) => (
-          <ul id={id} key={`board${id}`} className="boardCard">
-            {title}
+        {boards.map((board) => (
+          <ul key={board.id} id={board.id} className="boardCard">
+            <p>{board.title}</p>
             <button type="button" className="removeBtn" onClick={removeBoard}>
-              보드 지우기
+              지우기
             </button>
-            {todos.map((todo, idx) => (
-              <li key={idx}>{todo.content}</li>
-            ))}
+            {todos.map((todo) =>
+              todo.boardId === board.id ? (
+                <li key={todo.id}>{todo.content}</li>
+              ) : undefined,
+            )}
             <input
               type="text"
               className="inputTodo"
-              onKeyPress={generateTodo}
-            />
+              onKeyPress={createTodo}
+            ></input>
           </ul>
         ))}
       </section>
