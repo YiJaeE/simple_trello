@@ -29,7 +29,7 @@ const Board = ({ userId, userLogOut }) => {
 
     const newTodos = {
       boardId: boardId,
-      id: Math.random(),
+      id: new Date() * Math.random(),
       content: e.target.value,
     };
     if (e.key === 'Enter') {
