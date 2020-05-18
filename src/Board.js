@@ -29,7 +29,7 @@ const Board = ({ userId, userLogOut }) => {
 
     const newTodos = {
       boardId: boardId,
-      id: new Date() * Math.random(),
+      id: boardId * Math.random(),
       content: e.target.value,
     };
     if (e.key === 'Enter') {
@@ -57,14 +57,15 @@ const Board = ({ userId, userLogOut }) => {
       <section className="boardSection">
         {boards.map((board) => (
           <ul key={board.id} id={board.id} className="boardCard">
-            <p>{board.title}</p>
+            <span>{board.title}</span>
             <button type="button" className="removeBtn" onClick={removeBoard}>
               지우기
             </button>
-            {todos.map((todo) =>
-              todo.boardId === board.id ? (
-                <li key={todo.id}>{todo.content}</li>
-              ) : undefined,
+            {todos.map(
+              (todo) =>
+                todo.boardId === board.id && (
+                  <li key={todo.id}>{todo.content}</li>
+                ),
             )}
             <input
               type="text"
