@@ -2,20 +2,29 @@ import React, { useState } from 'react';
 import './Board.css';
 
 const Board = ({ userId, userLogOut }) => {
-  const [boards, setBoards] = useState([]);
-  const [todos, setTodos] = useState([]);
+  const [boards, setBoards] = useState([{ id: 1, title: '샘플' }]);
+  const [todos, setTodos] = useState([
+    { boardId: 1, id: Math.random(), content: '체크된 거', completed: true },
+    {
+      boardId: 1,
+      id: Math.random(),
+      content: '체크 안 된 거',
+      completed: false,
+    },
+  ]);
 
   const generateBoardId = () =>
     boards.length ? Math.max(...boards.map((board) => board.id)) + 1 : 1;
 
   const createBoard = (e) => {
+    const title = e.target.value.trim();
     const newBoards = {
       id: generateBoardId(),
-      title: e.target.value,
+      title: title,
     };
-    if (e.key === 'Enter') {
-      setBoards([...boards, newBoards]);
-    }
+    if (title === '' || e.key !== 'Enter') return;
+    setBoards([...boards, newBoards]);
+    e.target.value = '';
   };
 
   const removeBoard = (e) => {
@@ -26,15 +35,30 @@ const Board = ({ userId, userLogOut }) => {
 
   const createTodo = (e) => {
     const boardId = +e.target.parentNode.id;
-
+    const content = e.target.value.trim();
     const newTodos = {
       boardId: boardId,
       id: boardId * Math.random(),
-      content: e.target.value,
+      content: content,
+      completed: false,
     };
-    if (e.key === 'Enter') {
-      setTodos([...todos, newTodos]);
-    }
+    if (content === '' || e.key !== 'Enter') return;
+    setTodos([...todos, newTodos]);
+    e.target.value = '';
+  };
+
+  const checkTodo = (e) => {
+    const id = +e.target.parentNode.id;
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
+  };
+
+  const removeTodo = (e) => {
+    const id = +e.target.parentNode.id;
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
@@ -64,7 +88,18 @@ const Board = ({ userId, userLogOut }) => {
             {todos.map(
               (todo) =>
                 todo.boardId === board.id && (
-                  <li key={todo.id}>{todo.content}</li>
+                  <li key={todo.id} id={todo.id} className="todos">
+                    <input
+                      type="checkbox"
+                      className="checkbox"
+                      checked={todo.completed ? 'checked' : ''}
+                      onChange={checkTodo}
+                    />
+                    <span>{todo.content}</span>
+                    <button type="button" onClick={removeTodo}>
+                      X
+                    </button>
+                  </li>
                 ),
             )}
             <input

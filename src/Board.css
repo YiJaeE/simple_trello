@@ -1,6 +1,7 @@
 .boardContainer {
   overflow-x: auto;
   white-space: nowrap;
+  background-color: tan;
 }
 
 header {
@@ -40,7 +41,7 @@ header {
   margin-left: 20px;
   padding: 15px;
   border: none;
-  border-radius: 0;
+  background-color: tan;
   border-bottom: 2px solid #10a630;
 }
 
@@ -52,17 +53,20 @@ header {
   display: flex;
   flex-wrap: nowrap;
   padding: 50px 0 50px 50px;
-  background-color: tan;
 }
 
 .boardCard {
   position: relative;
-  background-color: thistle;
+  background-color: rgb(248, 248, 248);
   width: 250px;
+  min-width: 250px;
   height: 300px;
   margin: 30px;
   padding: 0;
   list-style: none;
+  -webkit-box-shadow: 6px 4px 20px 0px rgba(50, 50, 50, 0.49);
+  -moz-box-shadow: 6px 4px 20px 0px rgba(50, 50, 50, 0.49);
+  box-shadow: 6px 4px 20px 0px rgba(50, 50, 50, 0.49);
 }
 
 .removeBtn {
@@ -76,4 +80,18 @@ header {
   display: block;
   position: absolute;
   bottom: 0;
+}
+
+.todos {
+  background-color: tomato;
+  display: flex;
+}
+
+.todos > span {
+  flex-grow: 1;
+}
+
+.checkbox {
+  background-color: thistle;
+  width: 12px;
 }
