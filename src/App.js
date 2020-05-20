@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Login from './Login';
 import Board from './Board';
+import Header from './Header';
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -13,14 +14,11 @@ const App = () => {
   };
   return (
     <>
+      <Header isLogin={isLogin} userId={userId} userLogOut={userLogOut} />
       {isLogin === false ? (
         <Login setIsLogin={setIsLogin} userId={userId} setUserId={setUserId} />
       ) : (
-        <Board
-          setIsLogin={setIsLogin}
-          userId={userId}
-          userLogOut={userLogOut}
-        />
+        <Board setIsLogin={setIsLogin} />
       )}
     </>
   );

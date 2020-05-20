@@ -25,8 +25,7 @@ const Login = ({ setIsLogin, userId, setUserId }) => {
   };
   return (
     <>
-      <header>로그인 요망</header>
-      <div className="container">
+      <div className="login-container">
         <form className="form-container">
           <fieldset>
             <legend>회원가입 폼</legend>
@@ -36,14 +35,14 @@ const Login = ({ setIsLogin, userId, setUserId }) => {
                 <input
                   type={input === 'password' ? 'password' : 'text'}
                   className={input}
-                  placeholder={input}
+                  placeholder={`${input}를 입력하세요`}
                   onChange={(e) => handlechange(input, e)}
                   onKeyPress={handleKeyPress}
                 />
               </label>
             ))}
             <button type="button" className="btn" onClick={handleButtonClick}>
-              LogIn
+              로그인
             </button>
           </fieldset>
         </form>
