@@ -1,65 +1,16 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import './Board.css';
-import { initialState, reducer } from './reducer/Board';
+import UseBoard from './hook/UseBoard';
 
 const Board = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const generateBoardId = () =>
-    state.boardsState.length
-      ? Math.max(...state.boardsState.map((board) => board.id)) + 1
-      : 1;
-
-  const createBoard = (e) => {
-    const title = e.target.value.trim();
-    if (title === '' || e.key !== 'Enter') return;
-    dispatch({
-      type: 'CREATE_BOARD',
-      newBoards: { id: generateBoardId(), title: title },
-    });
-    e.target.value = '';
-  };
-
-  const removeBoard = (e) => {
-    const id = +e.target.parentNode.id;
-    dispatch({
-      type: 'DELETE_BOARD',
-      id: id,
-    });
-  };
-
-  const createTodo = (e) => {
-    const boardId = +e.target.parentNode.id;
-    const content = e.target.value.trim();
-    const newTodos = {
-      boardId: boardId,
-      id: boardId * Math.random(),
-      content: content,
-      completed: false,
-    };
-    if (content === '' || e.key !== 'Enter') return;
-    dispatch({
-      type: 'CREATE_TODO',
-      newTodos: newTodos,
-    });
-    e.target.value = '';
-  };
-
-  const checkTodo = (e) => {
-    const id = +e.target.parentNode.id;
-    dispatch({
-      type: 'CHECK_TODO',
-      id: id,
-    });
-  };
-
-  const removeTodo = (e) => {
-    const id = +e.target.parentNode.id;
-    dispatch({
-      type: 'DELETE_TODO',
-      id: id,
-    });
-  };
+  const [
+    state,
+    createBoard,
+    removeBoard,
+    createTodo,
+    checkTodo,
+    removeTodo,
+  ] = UseBoard();
 
   return (
     <div className="boardContainer">
@@ -75,7 +26,11 @@ const Board = () => {
         {state.boardsState.map((board) => (
           <ul key={board.id} id={board.id} className="boardCard">
             <span className="board-title">{board.title}</span>
-            <button type="button" className="removeBtn" onClick={removeBoard}>
+            <button
+              type="button"
+              className="removeBtn"
+              onClick={() => removeBoard(board.id)}
+            >
               X
             </button>
             {state.todosState.map(
@@ -87,13 +42,13 @@ const Board = () => {
                       type="checkbox"
                       className="checkbox"
                       checked={todo.completed ? 'checked' : ''}
-                      onChange={checkTodo}
+                      onChange={() => checkTodo(todo.id)}
                     />
                     <label htmlFor={`todo-${todo.id}`}></label>
                     <span className="todo-content">{todo.content}</span>
                     <button
                       type="button"
-                      onClick={removeTodo}
+                      onClick={() => removeTodo(todo.id)}
                       className="todo-remove"
                     >
                       X
