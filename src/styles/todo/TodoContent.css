@@ -1,0 +1,7 @@
+.todos > span {
+  flex-grow: 1;
+}
+
+.todo-content {
+  margin-left: 10px;
+}

@@ -1,0 +1,17 @@
+.checkbox {
+  display: none;
+}
+
+.checkbox + label {
+  display: inline-block;
+  background-color: #FFFDFA;
+	width: 15px;
+	height: 15px;
+  cursor: pointer;
+  border: 1px solid #FFFDFA;
+}
+
+.checkbox:checked + label {
+  background-color: #2A4071;
+  border: 1px solid #FFFDFA;
+}

@@ -1,0 +1,13 @@
+.removeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #2A4071;
+  color: #E2DAC8;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  height: 35px;
+  padding: 0 10px;
+}

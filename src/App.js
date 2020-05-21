@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Login from './Login';
-import Board from './Board';
-import Header from './Header';
+import Login from './components/Login';
+import Board from './components/board/Board';
+import Header from './components/Header';
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [userId, setUserId] = useState('');
 
   const userLogOut = () => {

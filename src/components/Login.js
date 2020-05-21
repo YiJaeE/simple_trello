@@ -1,5 +1,5 @@
 import React from 'react';
-import './Login.css';
+import '../styles/Login.css';
 
 const Login = ({ setIsLogin, userId, setUserId }) => {
   const userInput = ['id', 'password'];
@@ -7,9 +7,6 @@ const Login = ({ setIsLogin, userId, setUserId }) => {
   const handlechange = (key, e) => {
     if (key === 'id') {
       setUserId(e.target.value);
-      console.log('사용자 아이디 입력 중...');
-    } else {
-      console.log('사용자 패스워드 입력 중...');
     }
   };
 
