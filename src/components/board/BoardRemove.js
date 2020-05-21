@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../styles/board/BoardRemove.css';
+import BoardContext from '../../context/BoardContext';
 
-const BoardRemove = ({ board, removeBoard }) => {
+const BoardRemove = ({ board }) => {
+  const context = useContext(BoardContext);
+  const { removeBoard } = context;
   return (
     <button
       type="button"

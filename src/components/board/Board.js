@@ -3,6 +3,7 @@ import '../../styles/board/Board.css';
 import UseBoard from '../../hook/UseBoard';
 import BoardInput from './BoardInput';
 import BoardSection from './BoardSection';
+import BoardContext from '../../context/BoardContext';
 
 const Board = () => {
   const [
@@ -14,16 +15,21 @@ const Board = () => {
     removeTodo,
   ] = UseBoard();
 
+  const data = {
+    state,
+    createBoard,
+    removeBoard,
+    createTodo,
+    checkTodo,
+    removeTodo,
+  };
+
   return (
     <div className="boardContainer">
-      <BoardInput createBoard={createBoard} />
-      <BoardSection
-        state={state}
-        removeBoard={removeBoard}
-        createTodo={createTodo}
-        checkTodo={checkTodo}
-        removeTodo={removeTodo}
-      ></BoardSection>
+      <BoardContext.Provider value={data}>
+        <BoardInput />
+        <BoardSection />
+      </BoardContext.Provider>
     </div>
   );
 };

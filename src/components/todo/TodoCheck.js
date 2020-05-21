@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../styles/todo/TodoCheck.css';
+import BoardContext from '../../context/BoardContext';
 
-const TodoCheck = ({ todo, checkTodo }) => {
+const TodoCheck = ({ todo }) => {
+  const context = useContext(BoardContext);
+  const { checkTodo } = context;
   return (
     <>
       <input

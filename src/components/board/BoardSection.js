@@ -1,26 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../styles/board/BoardSection.css';
 import BoardList from './BoardList';
+import BoardContext from '../../context/BoardContext';
 
-const BoardSection = ({
-  state,
-  removeBoard,
-  checkTodo,
-  removeTodo,
-  createTodo,
-}) => {
+const BoardSection = () => {
+  const context = useContext(BoardContext);
+  const { state } = context;
   return (
     <section className="boardSection">
       {state.boardsState.map((board) => (
-        <BoardList
-          key={board.id}
-          state={state}
-          board={board}
-          removeBoard={removeBoard}
-          checkTodo={checkTodo}
-          removeTodo={removeTodo}
-          createTodo={createTodo}
-        />
+        <BoardList board={board} key={board.id} />
       ))}
     </section>
   );

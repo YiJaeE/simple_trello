@@ -4,12 +4,12 @@ import TodoCheck from './TodoCheck';
 import TodoRemove from './TodoRemove';
 import TodoContent from './TodoContent';
 
-const TodoList = ({ todo, checkTodo, removeTodo }) => {
+const TodoList = ({ todo }) => {
   return (
     <li key={todo.id} id={todo.id} className="todos">
-      <TodoCheck todo={todo} checkTodo={checkTodo} />
+      <TodoCheck todo={todo} />
       <TodoContent todo={todo} />
-      <TodoRemove todo={todo} removeTodo={removeTodo} />
+      <TodoRemove todo={todo} />
     </li>
   );
 };

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../styles/board/BoardInput.css';
+import BoardContext from '../../context/BoardContext';
 
-const BoardInput = ({ createBoard }) => {
+const BoardInput = () => {
+  const context = useContext(BoardContext);
+  const { createBoard } = context;
   return (
     <section className="inputBoard">
       <input
