@@ -1,4 +1,4 @@
-import { useReducer, useCallback } from 'react';
+import { useReducer } from 'react';
 import { initialState, reducer } from '../reducer/Board';
 
 const UseBoard = () => {
@@ -19,15 +19,12 @@ const UseBoard = () => {
     e.target.value = '';
   };
 
-  const removeBoard = useCallback(
-    (id) => {
-      dispatch({
-        type: 'DELETE_BOARD',
-        id: id,
-      });
-    },
-    [state],
-  );
+  const removeBoard = (id) => {
+    dispatch({
+      type: 'DELETE_BOARD',
+      id: id,
+    });
+  };
 
   const createTodo = (e) => {
     const boardId = +e.target.parentNode.id;
