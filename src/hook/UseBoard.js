@@ -1,34 +1,65 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 import { initialState, reducer } from '../reducer/Board';
+import { trelloApi } from '../api';
 
 const UseBoard = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    const boardFunc = async () => {
+      try {
+        dispatch({ type: 'LOADING' });
+        let boardData = await trelloApi.getBoard();
+        let todoData = await trelloApi.getTodos();
+        if (boardData.status === 200) {
+          dispatch({
+            type: 'SUCCESS',
+            boards: boardData.data,
+            todos: todoData.data,
+          });
+        }
+      } catch (error) {
+        console.log('err');
+      }
+    };
+    boardFunc();
+  }, []);
 
   const generateBoardId = () =>
     state.boardsState.length
       ? Math.max(...state.boardsState.map((board) => board.id)) + 1
       : 1;
 
-  const createBoard = (e) => {
+  const createBoard = async (e) => {
     const title = e.target.value.trim();
+    let value = e.target.value;
     if (title === '' || e.key !== 'Enter') return;
-    dispatch({
-      type: 'CREATE_BOARD',
-      newBoards: { id: generateBoardId(), title: title },
-    });
-    e.target.value = '';
+    const newBoards = { id: generateBoardId(), title: title };
+    try {
+      await trelloApi.createBoard(newBoards);
+      dispatch({ type: 'CREATE_BOARD', newBoards: newBoards });
+      value = '';
+    } catch (error) {
+      console.log('err');
+    }
   };
 
-  const removeBoard = (id) => {
-    dispatch({
-      type: 'DELETE_BOARD',
-      id: id,
-    });
+  const removeBoard = async (id) => {
+    try {
+      await trelloApi.removeBoard(id);
+      dispatch({
+        type: 'DELETE_BOARD',
+        id: id,
+      });
+    } catch (error) {
+      console.log('err');
+    }
   };
 
-  const createTodo = (e) => {
+  const createTodo = async (e) => {
     const boardId = +e.target.parentNode.id;
     const content = e.target.value.trim();
+    let value = e.target.value;
     const newTodos = {
       boardId: boardId,
       id: boardId * Math.random(),
@@ -36,11 +67,16 @@ const UseBoard = () => {
       completed: false,
     };
     if (content === '' || e.key !== 'Enter') return;
-    dispatch({
-      type: 'CREATE_TODO',
-      newTodos: newTodos,
-    });
-    e.target.value = '';
+    try {
+      await trelloApi.createTodo(newTodos);
+      dispatch({
+        type: 'CREATE_TODO',
+        newTodos: newTodos,
+      });
+    } catch (error) {
+      console.log('err');
+    }
+    value = '';
   };
 
   const checkTodo = (id) => {
@@ -50,11 +86,16 @@ const UseBoard = () => {
     });
   };
 
-  const removeTodo = (id) => {
-    dispatch({
-      type: 'DELETE_TODO',
-      id: id,
-    });
+  const removeTodo = async (id) => {
+    try {
+      await trelloApi.removeTodo(id);
+      dispatch({
+        type: 'DELETE_TODO',
+        id: id,
+      });
+    } catch (error) {
+      console.log('err');
+    }
   };
   return [state, createBoard, removeBoard, createTodo, checkTodo, removeTodo];
 };

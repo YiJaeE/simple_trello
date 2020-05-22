@@ -1,22 +1,28 @@
 export const initialState = {
-  boardsState: [{ id: 1, title: '샘플' }],
-  todosState: [
-    { boardId: 1, id: Math.random(), content: '체크된 거', completed: true },
-    {
-      boardId: 1,
-      id: Math.random(),
-      content: '체크 안 된 거',
-      completed: false,
-    },
-  ],
+  boardsState: [],
+  todosState: [],
+  loading: false,
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
+    case 'LOADING':
+      return {
+        boardsState: initialState.boardsState,
+        todosState: initialState.todosState,
+        loading: true,
+      };
+    case 'SUCCESS':
+      return {
+        boardsState: action.boards,
+        todosState: action.todos,
+        loading: initialState.loading,
+      };
     case 'CREATE_BOARD':
       return {
         boardsState: [...state.boardsState, action.newBoards],
         todosState: state.todosState,
+        loading: initialState.loading,
       };
     case 'DELETE_BOARD':
       return {

@@ -1,0 +1,58 @@
+{
+  "boardsState": [
+    {
+      "id": 1,
+      "title": "올ㅋ"
+    },
+    {
+      "id": 2,
+      "title": "ㅇ"
+    },
+    {
+      "id": 3,
+      "title": "ㅇㅇ"
+    },
+    {
+      "id": 4,
+      "title": "ㅇㅇㅇㅇ"
+    }
+  ],
+  "todosState": [
+    {
+      "boardId": 1,
+      "id": 101,
+      "content": "체크된 거",
+      "completed": false
+    },
+    {
+      "boardId": 3,
+      "id": 0.6055183658727086,
+      "content": "ㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+      "completed": false
+    },
+    {
+      "boardId": 2,
+      "id": 1.3288261691131744,
+      "content": "흠",
+      "completed": false
+    },
+    {
+      "boardId": 2,
+      "id": 1.4966231737566953,
+      "content": "흐음?",
+      "completed": false
+    },
+    {
+      "boardId": 4,
+      "id": 0.9417775317421446,
+      "content": "ao;sidjfc",
+      "completed": false
+    },
+    {
+      "boardId": 4,
+      "id": 2.70669092815292,
+      "content": "ao;sidjfcaw;jsfcas;ldkajf",
+      "completed": false
+    }
+  ]
+}
