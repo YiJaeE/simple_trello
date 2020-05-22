@@ -32,25 +32,29 @@ export const reducer = (state, action) => {
         todosState: state.todosState.filter(
           (todo) => todo.boardId !== action.id,
         ),
+        loading: initialState.loading,
       };
     case 'CREATE_TODO':
       return {
         boardsState: state.boardsState,
         todosState: [...state.todosState, action.newTodos],
+        loading: initialState.loading,
       };
     case 'CHECK_TODO':
       return {
         boardsState: state.boardsState,
         todosState: state.todosState.map((todo) =>
-          todo.id === action.id
+          todo.id === action.checkTodo.id
             ? { ...todo, completed: !todo.completed }
             : todo,
         ),
+        loading: initialState.loading,
       };
     case 'DELETE_TODO':
       return {
         boardsState: state.boardsState,
         todosState: state.todosState.filter((todo) => todo.id !== action.id),
+        loading: initialState.loading,
       };
     default:
       return null;

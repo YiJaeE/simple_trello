@@ -62,7 +62,7 @@ const UseBoard = () => {
     let value = e.target.value;
     const newTodos = {
       boardId: boardId,
-      id: boardId * Math.random(),
+      id: Math.floor(boardId * Math.random() * 10000),
       content: content,
       completed: false,
     };
@@ -79,11 +79,22 @@ const UseBoard = () => {
     value = '';
   };
 
-  const checkTodo = (id) => {
-    dispatch({
-      type: 'CHECK_TODO',
-      id: id,
-    });
+  const checkTodo = async (e) => {
+    const { id } = e.target.parentNode;
+    const checked = state.todosState.find((todo) => todo.id === +id);
+    const checkTodo = {
+      id: checked.id,
+      completed: !checked.completed,
+    };
+    try {
+      await trelloApi.checkTodo(checkTodo);
+      dispatch({
+        type: 'CHECK_TODO',
+        checkTodo: checkTodo,
+      });
+    } catch (error) {
+      console.log('err');
+    }
   };
 
   const removeTodo = async (id) => {

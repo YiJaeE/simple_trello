@@ -6,52 +6,60 @@
     },
     {
       "id": 2,
-      "title": "ㅇ"
+      "title": "해야할 거"
     },
     {
       "id": 3,
-      "title": "ㅇㅇ"
-    },
-    {
-      "id": 4,
-      "title": "ㅇㅇㅇㅇ"
+      "title": "구현해보면 좋을 것들"
     }
   ],
   "todosState": [
     {
       "boardId": 1,
-      "id": 101,
+      "id": 542,
       "content": "체크된 거",
+      "completed": true
+    },
+    {
+      "boardId": 1,
+      "id": 812,
+      "content": "체크 안 된 거",
+      "completed": false
+    },
+    {
+      "boardId": 2,
+      "id": 597,
+      "content": "보드 삭제시 투두 삭제",
+      "completed": false
+    },
+    {
+      "boardId": 2,
+      "id": 1098,
+      "content": "인풋값 입력시 글자 사라지기",
       "completed": false
     },
     {
       "boardId": 3,
-      "id": 0.6055183658727086,
-      "content": "ㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+      "id": 2562,
+      "content": "로그인 기능",
+      "completed": false
+    },
+    {
+      "boardId": 3,
+      "id": 2049,
+      "content": "content click => popup",
       "completed": false
     },
     {
       "boardId": 2,
-      "id": 1.3288261691131744,
-      "content": "흠",
+      "id": 22,
+      "content": "인풋값 글자 색상",
       "completed": false
     },
     {
       "boardId": 2,
-      "id": 1.4966231737566953,
-      "content": "흐음?",
-      "completed": false
-    },
-    {
-      "boardId": 4,
-      "id": 0.9417775317421446,
-      "content": "ao;sidjfc",
-      "completed": false
-    },
-    {
-      "boardId": 4,
-      "id": 2.70669092815292,
-      "content": "ao;sidjfcaw;jsfcas;ldkajf",
+      "id": 585,
+      "content": "인풋값 간격?",
       "completed": false
     }
   ]
