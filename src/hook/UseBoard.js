@@ -32,13 +32,11 @@ const UseBoard = () => {
 
   const createBoard = async (e) => {
     const title = e.target.value.trim();
-    let value = e.target.value;
     if (title === '' || e.key !== 'Enter') return;
     const newBoards = { id: generateBoardId(), title: title };
     try {
       await trelloApi.createBoard(newBoards);
       dispatch({ type: 'CREATE_BOARD', newBoards: newBoards });
-      value = '';
     } catch (error) {
       console.log('err');
     }
@@ -57,7 +55,7 @@ const UseBoard = () => {
       await todoId.map((id) => trelloApi.removeTodo(id));
       dispatch({
         type: 'DELETE_TODO',
-        id: todoId.map((id) => id),
+        id: todoId,
       });
     } catch (error) {
       console.log('err');
@@ -67,7 +65,6 @@ const UseBoard = () => {
   const createTodo = async (e) => {
     const boardId = +e.target.parentNode.id;
     const content = e.target.value.trim();
-    let value = e.target.value;
     const newTodos = {
       boardId: boardId,
       id: Math.floor(boardId * Math.random() * 10000),
@@ -84,7 +81,6 @@ const UseBoard = () => {
     } catch (error) {
       console.log('err');
     }
-    value = '';
   };
 
   const checkTodo = async (todo) => {
