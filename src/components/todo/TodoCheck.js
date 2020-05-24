@@ -12,7 +12,7 @@ const TodoCheck = ({ todo }) => {
         type="checkbox"
         className="checkbox"
         checked={todo.completed ? 'checked' : ''}
-        onChange={checkTodo}
+        onChange={() => checkTodo(todo)}
       />
       <label htmlFor={`todo-${todo.id}`}></label>
     </>

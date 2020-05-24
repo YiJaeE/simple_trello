@@ -12,6 +12,5 @@ export const trelloApi = {
   createTodo: (todos) => api.post(`todosState/`, todos).then((res) => res),
   checkTodo: ({ id, completed }) =>
     api.patch(`/todosState/${id}`, { completed }).then((res) => res),
-  removeTodo: (id) =>
-    api.delete(`/todosState/${id}`).then((res) => console.log(res)),
+  removeTodo: (id) => api.delete(`/todosState/${id}`).then((res) => res),
 };

@@ -45,11 +45,19 @@ const UseBoard = () => {
   };
 
   const removeBoard = async (id) => {
+    const todoId = state.todosState
+      .filter((todo) => todo.boardId === id)
+      .map((todo) => todo.id);
     try {
       await trelloApi.removeBoard(id);
       dispatch({
         type: 'DELETE_BOARD',
         id: id,
+      });
+      await todoId.map((id) => trelloApi.removeTodo(id));
+      dispatch({
+        type: 'DELETE_TODO',
+        id: todoId.map((id) => id),
       });
     } catch (error) {
       console.log('err');
@@ -79,12 +87,10 @@ const UseBoard = () => {
     value = '';
   };
 
-  const checkTodo = async (e) => {
-    const { id } = e.target.parentNode;
-    const checked = state.todosState.find((todo) => todo.id === +id);
+  const checkTodo = async (todo) => {
     const checkTodo = {
-      id: checked.id,
-      completed: !checked.completed,
+      id: todo.id,
+      completed: !todo.completed,
     };
     try {
       await trelloApi.checkTodo(checkTodo);
