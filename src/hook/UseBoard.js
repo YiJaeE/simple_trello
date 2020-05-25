@@ -34,6 +34,7 @@ const UseBoard = () => {
     const title = e.target.value.trim();
     if (title === '' || e.key !== 'Enter') return;
     const newBoards = { id: generateBoardId(), title: title };
+    e.target.value = '';
     try {
       await trelloApi.createBoard(newBoards);
       dispatch({ type: 'CREATE_BOARD', newBoards: newBoards });
@@ -72,6 +73,7 @@ const UseBoard = () => {
       completed: false,
     };
     if (content === '' || e.key !== 'Enter') return;
+    e.target.value = '';
     try {
       await trelloApi.createTodo(newTodos);
       dispatch({

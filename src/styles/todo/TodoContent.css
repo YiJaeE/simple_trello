@@ -4,4 +4,31 @@
 
 .todo-content {
   margin-left: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden
+}
+
+.completed-check {
+  position: relative;
+}
+.completed-check::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #2A4071;
+  opacity: .5;
+  animation: move .3s linear;
+}
+
+@keyframes move {
+  from {
+    width: 0
+  }
+  to {
+    width: 100%
+  }
 }

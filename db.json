@@ -10,7 +10,7 @@
     },
     {
       "id": 6,
-      "title": "구현해보면 좋을 것들"
+      "title": "해보면 좋은 거"
     }
   ],
   "todosState": [
@@ -18,25 +18,25 @@
       "boardId": 4,
       "id": 6486,
       "content": "인풋값 글자 색상",
-      "completed": false
+      "completed": true
     },
     {
       "boardId": 4,
       "id": 6386,
       "content": "인풋값 간격",
-      "completed": false
+      "completed": true
     },
     {
       "boardId": 4,
       "id": 36275,
       "content": "체크박스 체크시 중간에 선 긋기",
-      "completed": false
+      "completed": true
     },
     {
       "boardId": 4,
       "id": 22788,
       "content": "투두가 너무 길 때 ... 표시",
-      "completed": false
+      "completed": true
     },
     {
       "boardId": 5,
@@ -48,7 +48,7 @@
       "boardId": 5,
       "id": 40265,
       "content": "인풋값 입력시 글자 사라지기",
-      "completed": false
+      "completed": true
     },
     {
       "boardId": 5,
@@ -57,15 +57,15 @@
       "completed": false
     },
     {
-      "boardId": 6,
-      "id": 34314,
-      "content": "로그인",
-      "completed": false
-    },
-    {
       "boardId": 4,
       "id": 39538,
       "content": "자잘한 간격들...",
+      "completed": true
+    },
+    {
+      "boardId": 6,
+      "id": 7862,
+      "content": "로그인 구현",
       "completed": false
     }
   ]

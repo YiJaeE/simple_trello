@@ -2,4 +2,5 @@
   display: flex;
   padding: 3px;
   border-bottom: 1px solid #2A4071;
+  align-items: center;
 }
