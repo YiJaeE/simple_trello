@@ -17,9 +17,19 @@ const UseBoard = () => {
             boards: boardData.data,
             todos: todoData.data,
           });
+        } else {
+          dispatch({
+            type: 'ERROR',
+            state: true,
+            message: boardFunc.statusText,
+          });
         }
       } catch (error) {
-        console.log('err');
+        dispatch({
+          type: 'ERROR',
+          state: true,
+          message: error.message,
+        });
       }
     };
     boardFunc();
@@ -39,7 +49,11 @@ const UseBoard = () => {
       await trelloApi.createBoard(newBoards);
       dispatch({ type: 'CREATE_BOARD', newBoards: newBoards });
     } catch (error) {
-      console.log('err');
+      dispatch({
+        type: 'ERROR',
+        state: true,
+        message: error.message,
+      });
     }
   };
 
@@ -59,7 +73,11 @@ const UseBoard = () => {
         id: todoId,
       });
     } catch (error) {
-      console.log('err');
+      dispatch({
+        type: 'ERROR',
+        state: true,
+        message: error.message,
+      });
     }
   };
 
@@ -81,7 +99,11 @@ const UseBoard = () => {
         newTodos: newTodos,
       });
     } catch (error) {
-      console.log('err');
+      dispatch({
+        type: 'ERROR',
+        state: true,
+        message: error.message,
+      });
     }
   };
 
@@ -97,7 +119,11 @@ const UseBoard = () => {
         checkTodo: checkTodo,
       });
     } catch (error) {
-      console.log('err');
+      dispatch({
+        type: 'ERROR',
+        state: true,
+        message: error.message,
+      });
     }
   };
 
@@ -109,7 +135,11 @@ const UseBoard = () => {
         id: id,
       });
     } catch (error) {
-      console.log('err');
+      dispatch({
+        type: 'ERROR',
+        state: true,
+        message: error.message,
+      });
     }
   };
   return [state, createBoard, removeBoard, createTodo, checkTodo, removeTodo];

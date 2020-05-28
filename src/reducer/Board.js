@@ -1,60 +1,78 @@
 export const initialState = {
+  loading: false,
   boardsState: [],
   todosState: [],
-  loading: false,
+  error: {
+    state: false,
+    message: null,
+  },
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':
       return {
+        loading: true,
         boardsState: initialState.boardsState,
         todosState: initialState.todosState,
-        loading: true,
+        error: initialState.error,
       };
     case 'SUCCESS':
       return {
+        loading: initialState.loading,
         boardsState: action.boards,
         todosState: action.todos,
+        error: initialState.error,
+      };
+    case 'ERROR':
+      return {
         loading: initialState.loading,
+        boardsState: initialState.boardsState,
+        todosState: initialState.todosState,
+        error: action.error,
       };
     case 'CREATE_BOARD':
       return {
+        loading: initialState.loading,
         boardsState: [...state.boardsState, action.newBoards],
         todosState: state.todosState,
-        loading: initialState.loading,
+        error: initialState.error,
       };
     case 'DELETE_BOARD':
       return {
+        loading: initialState.loading,
         boardsState: state.boardsState.filter(
           (board) => board.id !== action.id,
         ),
         todosState: state.todosState.filter(
           (todo) => todo.boardId !== action.id,
         ),
-        loading: initialState.loading,
+        error: initialState.error,
       };
     case 'CREATE_TODO':
       return {
+        loading: initialState.loading,
         boardsState: state.boardsState,
         todosState: [...state.todosState, action.newTodos],
-        loading: initialState.loading,
+        error: initialState.error,
       };
     case 'CHECK_TODO':
       return {
+        loading: initialState.loading,
         boardsState: state.boardsState,
         todosState: state.todosState.map((todo) =>
           todo.id === action.checkTodo.id
             ? { ...todo, completed: !todo.completed }
             : todo,
         ),
-        loading: initialState.loading,
+        error: initialState.error,
       };
     case 'DELETE_TODO':
       return {
+        loading: initialState.loading,
         boardsState: state.boardsState,
         todosState: state.todosState.filter((todo) => todo.id !== action.id),
-        loading: initialState.loading,
+        error: initialState.error,
       };
     default:
       return null;
