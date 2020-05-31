@@ -4,7 +4,7 @@ import Board from './components/board/Board';
 import Header from './components/Header';
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [userId, setUserId] = useState('');
 
   const userLogOut = () => {
