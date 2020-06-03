@@ -41,6 +41,18 @@ label > input::placeholder {
 }
 
 .btn {
+  background-color: #999;
+  color: #E2DAC8;
+  border-radius: 25px;
+  border: none;
+  width: 100%;
+  height: 50px;
+  margin-top: 40px;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+/* .btn {
   background-color: #2A4071;
   color: #E2DAC8;
   border-radius: 25px;
@@ -51,4 +63,4 @@ label > input::placeholder {
   margin-top: 40px;
   font-size: 1.2rem;
   font-weight: 900;
-}
+} */

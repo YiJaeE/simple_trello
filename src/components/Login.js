@@ -20,6 +20,13 @@ const Login = ({ setIsLogin, userId, setUserId }) => {
       handleButtonClick();
     }
   };
+
+  const handleBlur = (key, e) => {
+    const regExpPW = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/;
+    if (key === 'password' && !regExpPW.test(e.target.value)) {
+      console.log(`형식에 맞는 비밀번호를 기입해주세요`);
+    }
+  };
   return (
     <>
       <div className="login-container">
@@ -35,6 +42,7 @@ const Login = ({ setIsLogin, userId, setUserId }) => {
                   placeholder={`${input}를 입력하세요`}
                   onChange={(e) => handlechange(input, e)}
                   onKeyPress={handleKeyPress}
+                  onBlur={(e) => handleBlur(input, e)}
                 />
               </label>
             ))}
