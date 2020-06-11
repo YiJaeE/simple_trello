@@ -66,12 +66,12 @@
       "boardId": 6,
       "id": 7862,
       "content": "로그인 구현",
-      "completed": false
+      "completed": true
     },
     {
       "boardId": 4,
-      "id": 28738,
-      "content": "Stylus로 변경해보기",
+      "id": 25276,
+      "content": "scss로 변경",
       "completed": false
     }
   ]
