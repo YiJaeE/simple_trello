@@ -36,11 +36,9 @@ const UseBoard = () => {
   }, []);
 
   const generateBoardId = () =>
-    state.boardsState.length
-      ? Math.max(...state.boardsState.map((board) => board.id)) + 1
-      : 1;
+    state.boardsState.length ? Math.max(...state.boardsState.map(board => board.id)) + 1 : 1;
 
-  const createBoard = async (e) => {
+  const createBoard = async e => {
     const title = e.target.value.trim();
     if (title === '' || e.key !== 'Enter') return;
     const newBoards = { id: generateBoardId(), title: title };
@@ -57,17 +55,15 @@ const UseBoard = () => {
     }
   };
 
-  const removeBoard = async (id) => {
-    const todoId = state.todosState
-      .filter((todo) => todo.boardId === id)
-      .map((todo) => todo.id);
+  const removeBoard = async id => {
+    const todoId = state.todosState.filter(todo => todo.boardId === id).map(todo => todo.id);
     try {
       await trelloApi.removeBoard(id);
       dispatch({
         type: 'DELETE_BOARD',
         id: id,
       });
-      await todoId.map((id) => trelloApi.removeTodo(id));
+      await todoId.map(id => trelloApi.removeTodo(id));
       dispatch({
         type: 'DELETE_TODO',
         id: todoId,
@@ -81,7 +77,7 @@ const UseBoard = () => {
     }
   };
 
-  const createTodo = async (e) => {
+  const createTodo = async e => {
     const boardId = +e.target.parentNode.id;
     const content = e.target.value.trim();
     const newTodos = {
@@ -107,7 +103,7 @@ const UseBoard = () => {
     }
   };
 
-  const checkTodo = async (todo) => {
+  const checkTodo = async todo => {
     const checkTodo = {
       id: todo.id,
       completed: !todo.completed,
@@ -127,7 +123,7 @@ const UseBoard = () => {
     }
   };
 
-  const removeTodo = async (id) => {
+  const removeTodo = async id => {
     try {
       await trelloApi.removeTodo(id);
       dispatch({
