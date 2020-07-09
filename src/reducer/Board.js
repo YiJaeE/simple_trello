@@ -28,6 +28,11 @@ export const reducer = (state = initialState, action) => {
         ...state,
         boardsState: [...state.boardsState, action.newBoards],
       };
+    case 'EDIT_BOARD':
+      return {
+        ...state,
+        boardsState: [...state.boardsState, action.editBoard],
+      };
     case 'DELETE_BOARD':
       return {
         ...state,

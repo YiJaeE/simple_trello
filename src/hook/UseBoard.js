@@ -55,6 +55,22 @@ const UseBoard = () => {
     }
   };
 
+  const editBoard = async (e, id) => {
+    const title = e.target.value.trim();
+    if (title === '' || e.key !== 'Enter') return;
+    const editBaord = { id: id, title: title };
+    try {
+      await trelloApi.editBaord(editBaord);
+      dispatch({ type: 'EDIT_BOARD', editBaord: editBaord });
+    } catch (error) {
+      dispatch({
+        type: 'ERROR',
+        state: true,
+        message: error.message,
+      });
+    }
+  };
+
   const removeBoard = async id => {
     const todoId = state.todosState.filter(todo => todo.boardId === id).map(todo => todo.id);
     try {
@@ -138,7 +154,7 @@ const UseBoard = () => {
       });
     }
   };
-  return [state, createBoard, removeBoard, createTodo, checkTodo, removeTodo];
+  return [state, createBoard, editBoard, removeBoard, createTodo, checkTodo, removeTodo];
 };
 
 export default UseBoard;
