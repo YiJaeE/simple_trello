@@ -9,6 +9,7 @@ const Board = () => {
   const [
     state,
     createBoard,
+    editBoard,
     removeBoard,
     createTodo,
     checkTodo,
@@ -18,6 +19,7 @@ const Board = () => {
   const data = {
     state,
     createBoard,
+    editBoard,
     removeBoard,
     createTodo,
     checkTodo,

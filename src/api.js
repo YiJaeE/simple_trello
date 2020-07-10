@@ -8,7 +8,7 @@ export const trelloApi = {
   getBoard: () => api.get('/boardsState'),
   getTodos: () => api.get('/todosState'),
   createBoard: board => api.post(`/boardsState/`, board).then(res => res),
-  editBoard: (board, id) => api.patch(`/boardsState/${id}`, board).then(res => res),
+  editBoard: ({ id, title }) => api.patch(`/boardsState/${id}`, { title }).then(res => res),
   removeBoard: id => api.delete(`/boardsState/${id}`).then(res => res),
   createTodo: todos => api.post(`/todosState/`, todos).then(res => res),
   checkTodo: ({ id, completed }) => api.patch(`/todosState/${id}`, { completed }).then(res => res),

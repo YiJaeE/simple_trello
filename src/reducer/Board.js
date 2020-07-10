@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 export const initialState = {
   loading: false,
   boardsState: [],
@@ -6,6 +8,7 @@ export const initialState = {
     state: false,
     message: null,
   },
+  modify: true,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -31,7 +34,10 @@ export const reducer = (state = initialState, action) => {
     case 'EDIT_BOARD':
       return {
         ...state,
-        boardsState: [...state.boardsState, action.editBoard],
+        boardState: state.boardsState.map(board =>
+          board.id === action.id ? { ...board, title: action.title } : board,
+        ),
+        modify: true,
       };
     case 'DELETE_BOARD':
       return {
