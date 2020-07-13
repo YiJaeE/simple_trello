@@ -25,7 +25,7 @@ const BoardTitle = ({ board }) => {
         </span>
       ) : (
         <span className="board-title">
-          <input type="text" onKeyPress={editBoardTitle}></input>
+          <input type="text" onKeyPress={editBoardTitle} defaultValue={board.title}></input>
         </span>
       )}
     </>
