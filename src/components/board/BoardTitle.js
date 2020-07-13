@@ -13,8 +13,8 @@ const BoardTitle = ({ board }) => {
 
   const editBoardTitle = e => {
     const title = e.target.value.trim();
-    if (title === '' || e.key !== 'Enter') return;
-    editBoard({ id: board.id, title: title });
+    if (e.key !== 'Enter') return;
+    editBoard({ id: board.id, title: title !== '' ? title : board.title });
     setTitleEdit(true);
   };
   return (

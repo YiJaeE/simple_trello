@@ -14,7 +14,7 @@
     },
     {
       "id": 7,
-      "title": "쫜"
+      "title": "낄낄"
     }
   ],
   "todosState": [
@@ -101,6 +101,12 @@
       "id": 39128,
       "content": "회원 가입 구현",
       "completed": false
+    },
+    {
+      "boardId": 5,
+      "id": 42679,
+      "content": "Board Title 선택시 수정하기",
+      "completed": true
     }
   ]
 }
