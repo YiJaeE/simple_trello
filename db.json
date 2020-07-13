@@ -14,7 +14,15 @@
     },
     {
       "id": 7,
-      "title": "테스트테스트"
+      "title": "히히"
+    },
+    {
+      "id": 8,
+      "title": "호올?"
+    },
+    {
+      "id": 9,
+      "title": "읭??????"
     }
   ],
   "todosState": [
@@ -70,7 +78,7 @@
       "boardId": 6,
       "id": 7862,
       "content": "로그인 구현",
-      "completed": true
+      "completed": false
     },
     {
       "boardId": 4,

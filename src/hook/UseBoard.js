@@ -62,6 +62,8 @@ const UseBoard = () => {
     try {
       await trelloApi.editBoard(editBoardTitle);
       dispatch({ type: 'EDIT_BOARD', editBoardTitle: editBoardTitle });
+      let boardData = await trelloApi.getBoard();
+      dispatch({ type: 'GET_BOARD', boards: boardData.data });
     } catch (error) {
       dispatch({
         type: 'ERROR',
@@ -69,6 +71,7 @@ const UseBoard = () => {
         message: error.message,
       });
     }
+    console.log(editBoardTitle);
   };
 
   const removeBoard = async id => {

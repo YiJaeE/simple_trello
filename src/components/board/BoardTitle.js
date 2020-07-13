@@ -5,7 +5,6 @@ import BoardContext from '../../context/BoardContext';
 const BoardTitle = ({ board }) => {
   const context = useContext(BoardContext);
   const { editBoard } = context;
-  // console.log(editBoard);
   const [titleEdit, setTitleEdit] = useState(true);
 
   const editTitle = () => {
@@ -14,7 +13,6 @@ const BoardTitle = ({ board }) => {
 
   const enterBlur = e => {
     setTitleEdit(true);
-    console.log(titleEdit);
   };
   return (
     <>

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 export const initialState = {
   loading: false,
   boardsState: [],
@@ -8,7 +6,6 @@ export const initialState = {
     state: false,
     message: null,
   },
-  modify: true,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -26,6 +23,11 @@ export const reducer = (state = initialState, action) => {
       };
     case 'ERROR':
       return { ...state, error: action.error };
+    case 'GET_BOARD':
+      return {
+        ...state,
+        boardsState: [...action.boards],
+      };
     case 'CREATE_BOARD':
       return {
         ...state,
@@ -35,9 +37,10 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         boardState: state.boardsState.map(board =>
-          board.id === action.id ? { ...board, title: action.title } : board,
+          board.id === action.editBoardTitle.id
+            ? { ...board, title: action.editBoardTitle.title }
+            : board,
         ),
-        modify: true,
       };
     case 'DELETE_BOARD':
       return {
