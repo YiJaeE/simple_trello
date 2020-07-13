@@ -55,10 +55,10 @@ const UseBoard = () => {
     }
   };
 
-  const editBoard = async (id, e) => {
-    const title = e.target.value.trim();
-    if (title === '' || e.key !== 'Enter') return;
-    const editBoardTitle = { id: id, title: title };
+  const editBoard = async editBoardTitle => {
+    // const title = e.target.value.trim();
+    // if (title === '' || e.key !== 'Enter') return;
+    // const editBoardTitle = { id: id, title: title };
     try {
       await trelloApi.editBoard(editBoardTitle);
       dispatch({ type: 'EDIT_BOARD', editBoardTitle: editBoardTitle });

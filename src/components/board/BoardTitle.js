@@ -11,7 +11,11 @@ const BoardTitle = ({ board }) => {
     setTitleEdit(false);
   };
 
-  const enterBlur = e => {
+  const modifyTitle = e => {
+    const title = e.target.value.trim();
+    if (title === '' || e.key !== 'Enter') return;
+    const editBoardTitle = { id: board.id, title: title };
+    editBoard(editBoardTitle);
     setTitleEdit(true);
   };
   return (
@@ -22,7 +26,7 @@ const BoardTitle = ({ board }) => {
         </span>
       ) : (
         <span className="board-title">
-          <input type="text" onKeyPress={e => editBoard(board.id, e)} onBlur={enterBlur}></input>
+          <input type="text" onKeyPress={modifyTitle}></input>
         </span>
       )}
     </>
