@@ -8,6 +8,8 @@ const TodoContent = ({ todo }) => {
     setTodoEdit(false);
   };
 
+  const editTodoContent = e => {};
+
   return (
     <span className="todo-content">
       {todo.completed ? (
@@ -18,7 +20,7 @@ const TodoContent = ({ todo }) => {
             <span onClick={todoInputChange}>{todo.content}</span>
           ) : (
             <span>
-              <input type="text" defaultValue={todo.content}></input>
+              <input type="text" onKeyPress={editTodoContent} defaultValue={todo.content}></input>
             </span>
           )}
         </>
