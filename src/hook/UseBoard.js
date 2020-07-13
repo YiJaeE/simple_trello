@@ -56,9 +56,6 @@ const UseBoard = () => {
   };
 
   const editBoard = async editBoardTitle => {
-    // const title = e.target.value.trim();
-    // if (title === '' || e.key !== 'Enter') return;
-    // const editBoardTitle = { id: id, title: title };
     try {
       await trelloApi.editBoard(editBoardTitle);
       dispatch({ type: 'EDIT_BOARD', editBoardTitle: editBoardTitle });
@@ -71,7 +68,6 @@ const UseBoard = () => {
         message: error.message,
       });
     }
-    console.log(editBoardTitle);
   };
 
   const removeBoard = async id => {

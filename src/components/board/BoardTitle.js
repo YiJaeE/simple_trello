@@ -7,26 +7,25 @@ const BoardTitle = ({ board }) => {
   const { editBoard } = context;
   const [titleEdit, setTitleEdit] = useState(true);
 
-  const editTitle = () => {
+  const boardInputChange = () => {
     setTitleEdit(false);
   };
 
-  const modifyTitle = e => {
+  const editBoardTitle = e => {
     const title = e.target.value.trim();
     if (title === '' || e.key !== 'Enter') return;
-    const editBoardTitle = { id: board.id, title: title };
-    editBoard(editBoardTitle);
+    editBoard({ id: board.id, title: title });
     setTitleEdit(true);
   };
   return (
     <>
       {titleEdit !== false ? (
-        <span className="board-title" onClick={editTitle}>
+        <span className="board-title" onClick={boardInputChange}>
           {board.title}
         </span>
       ) : (
         <span className="board-title">
-          <input type="text" onKeyPress={modifyTitle}></input>
+          <input type="text" onKeyPress={editBoardTitle}></input>
         </span>
       )}
     </>
