@@ -24,13 +24,13 @@ const TodoContent = ({ todo }) => {
         <span className="completed-check">{todo.content}</span>
       ) : (
         <>
-          {todoEdit !== false ? (
-            <span onClick={todoInputChange}>{todo.content}</span>
-          ) : (
-            <span>
+          <span onClick={todoInputChange}>
+            {todoEdit !== false ? (
+              todo.content
+            ) : (
               <input type="text" onKeyPress={editTodoContent} defaultValue={todo.content}></input>
-            </span>
-          )}
+            )}
+          </span>
         </>
       )}
     </span>

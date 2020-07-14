@@ -14,7 +14,7 @@
     },
     {
       "id": 7,
-      "title": "히히"
+      "title": "useEffect?"
     }
   ],
   "todosState": [
@@ -58,7 +58,7 @@
       "boardId": 5,
       "id": 29128,
       "content": "content 선택시 수정하기",
-      "completed": false
+      "completed": true
     },
     {
       "boardId": 4,
@@ -111,7 +111,13 @@
     {
       "boardId": 7,
       "id": 4469,
-      "content": "조아조아",
+      "content": "?",
+      "completed": false
+    },
+    {
+      "boardId": 7,
+      "id": 20166,
+      "content": "다시?",
       "completed": false
     }
   ]

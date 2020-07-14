@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import '../../styles/board/BoardTitle.css';
 import BoardContext from '../../context/BoardContext';
 
@@ -6,6 +6,8 @@ const BoardTitle = ({ board }) => {
   const context = useContext(BoardContext);
   const { editBoard } = context;
   const [titleEdit, setTitleEdit] = useState(true);
+
+  const titleInput = useRef();
 
   const boardInputChange = () => {
     setTitleEdit(false);
@@ -19,15 +21,13 @@ const BoardTitle = ({ board }) => {
   };
   return (
     <>
-      {titleEdit !== false ? (
-        <span className="board-title" onClick={boardInputChange}>
-          {board.title}
-        </span>
-      ) : (
-        <span className="board-title">
+      <span className="board-title" onClick={boardInputChange}>
+        {titleEdit !== false ? (
+          board.title
+        ) : (
           <input type="text" onKeyPress={editBoardTitle} defaultValue={board.title}></input>
-        </span>
-      )}
+        )}
+      </span>
     </>
   );
 };
