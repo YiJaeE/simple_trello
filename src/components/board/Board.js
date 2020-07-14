@@ -13,6 +13,7 @@ const Board = () => {
     removeBoard,
     createTodo,
     checkTodo,
+    editTodo,
     removeTodo,
   ] = UseBoard();
 
@@ -23,6 +24,7 @@ const Board = () => {
     removeBoard,
     createTodo,
     checkTodo,
+    editTodo,
     removeTodo,
   };
 

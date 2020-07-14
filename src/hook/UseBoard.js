@@ -138,6 +138,21 @@ const UseBoard = () => {
     }
   };
 
+  const editTodo = async editTodoContent => {
+    try {
+      await trelloApi.editTodo(editTodoContent);
+      dispatch({ type: 'EDIT_TODO', editTodoContent: editTodoContent });
+      let todoData = await trelloApi.getTodos();
+      dispatch({ type: 'GET_TODO', todos: todoData.data });
+    } catch (error) {
+      dispatch({
+        type: 'ERROR',
+        state: true,
+        message: error.message,
+      });
+    }
+  };
+
   const removeTodo = async id => {
     try {
       await trelloApi.removeTodo(id);
@@ -153,7 +168,7 @@ const UseBoard = () => {
       });
     }
   };
-  return [state, createBoard, editBoard, removeBoard, createTodo, checkTodo, removeTodo];
+  return [state, createBoard, editBoard, removeBoard, createTodo, checkTodo, editTodo, removeTodo];
 };
 
 export default UseBoard;

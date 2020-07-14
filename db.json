@@ -14,7 +14,7 @@
     },
     {
       "id": 7,
-      "title": "호호"
+      "title": "히히"
     }
   ],
   "todosState": [
@@ -107,6 +107,12 @@
       "id": 42679,
       "content": "Board Title 선택시 수정하기",
       "completed": true
+    },
+    {
+      "boardId": 7,
+      "id": 4469,
+      "content": "조아조아",
+      "completed": false
     }
   ]
 }

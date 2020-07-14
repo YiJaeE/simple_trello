@@ -48,6 +48,11 @@ export const reducer = (state = initialState, action) => {
         boardsState: state.boardsState.filter(board => board.id !== action.id),
         todosState: state.todosState.filter(todo => todo.boardId !== action.id),
       };
+    case 'GET_TODO':
+      return {
+        ...state,
+        todosState: [...action.todos],
+      };
     case 'CREATE_TODO':
       return {
         ...state,
@@ -58,6 +63,15 @@ export const reducer = (state = initialState, action) => {
         ...state,
         todosState: state.todosState.map(todo =>
           todo.id === action.checkTodo.id ? { ...todo, completed: !todo.completed } : todo,
+        ),
+      };
+    case 'EDIT_TODO':
+      return {
+        ...state,
+        todosState: state.todosState.map(todo =>
+          todo.id === action.editTodoContent.id
+            ? { ...todo, content: action.editTodoContent.content }
+            : todo,
         ),
       };
     case 'DELETE_TODO':
