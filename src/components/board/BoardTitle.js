@@ -7,10 +7,13 @@ const BoardTitle = ({ board }) => {
   const { editBoard } = context;
   const [titleEdit, setTitleEdit] = useState(true);
 
-  const titleInput = useRef();
+  const titleInput = useRef(null);
 
   const boardInputChange = () => {
     setTitleEdit(false);
+    if (!titleEdit) {
+      titleInput.current.focus();
+    }
   };
 
   const editBoardTitle = e => {
@@ -25,7 +28,12 @@ const BoardTitle = ({ board }) => {
         {titleEdit !== false ? (
           board.title
         ) : (
-          <input type="text" onKeyPress={editBoardTitle} defaultValue={board.title}></input>
+          <input
+            type="text"
+            onKeyPress={editBoardTitle}
+            defaultValue={board.title}
+            ref={titleInput}
+          ></input>
         )}
       </span>
     </>
