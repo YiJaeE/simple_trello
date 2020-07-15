@@ -14,6 +14,10 @@ const TodoContent = ({ todo }) => {
     setTodoEdit(false);
   };
 
+  const contentOutFocus = () => {
+    setTodoEdit(true);
+  };
+
   const editTodoContent = e => {
     const content = e.target.value.trim();
     if (e.key !== 'Enter') return;
@@ -31,7 +35,7 @@ const TodoContent = ({ todo }) => {
         <span className="completed-check">{todo.content}</span>
       ) : (
         <>
-          <span onClick={todoInputChange}>
+          <span onClick={todoInputChange} onBlur={contentOutFocus}>
             {todoEdit !== false ? (
               todo.content
             ) : (

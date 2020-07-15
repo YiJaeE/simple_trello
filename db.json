@@ -125,6 +125,12 @@
       "id": 14697,
       "content": "수정시 자동 포커스",
       "completed": true
+    },
+    {
+      "boardId": 5,
+      "id": 24299,
+      "content": "수정시 인풋창 하나만 열리게 하기",
+      "completed": true
     }
   ]
 }

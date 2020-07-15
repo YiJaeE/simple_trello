@@ -14,6 +14,10 @@ const BoardTitle = ({ board }) => {
     setTitleEdit(false);
   };
 
+  const boardOutFocus = () => {
+    setTitleEdit(true);
+  };
+
   const editBoardTitle = e => {
     const title = e.target.value.trim();
     if (e.key !== 'Enter') return;
@@ -27,7 +31,7 @@ const BoardTitle = ({ board }) => {
 
   return (
     <>
-      <span className="board-title" onClick={boardInputChange}>
+      <span className="board-title" onClick={boardInputChange} onBlur={boardOutFocus}>
         {titleEdit !== false ? (
           board.title
         ) : (
