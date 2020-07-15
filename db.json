@@ -64,7 +64,7 @@
       "boardId": 4,
       "id": 39538,
       "content": "자잘한 간격들...",
-      "completed": true
+      "completed": false
     },
     {
       "boardId": 6,
@@ -131,6 +131,18 @@
       "id": 24299,
       "content": "수정시 인풋창 하나만 열리게 하기",
       "completed": true
+    },
+    {
+      "boardId": 4,
+      "id": 30865,
+      "content": "수정 영역 확장 및 포인터",
+      "completed": false
+    },
+    {
+      "boardId": 7,
+      "id": 67192,
+      "content": "여기는 테슷흐",
+      "completed": false
     }
   ]
 }
