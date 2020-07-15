@@ -22,7 +22,7 @@ const BoardTitle = ({ board }) => {
     board.title = '';
     const title = e.target.value.trim();
     if (e.key !== 'Enter') return;
-    editBoard({ id: board.id, title: title !== '' ? title : board.title });
+    editBoard({ id: board.id, title: title });
     setTitleEdit(true);
   };
 

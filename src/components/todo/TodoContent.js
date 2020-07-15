@@ -22,7 +22,7 @@ const TodoContent = ({ todo }) => {
     todo.content = '';
     const content = e.target.value.trim();
     if (e.key !== 'Enter') return;
-    editTodo({ id: todo.id, content: content !== '' ? content : todo.content });
+    editTodo({ id: todo.id, content: content });
     setTodoEdit(true);
   };
 

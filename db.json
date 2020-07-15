@@ -14,7 +14,7 @@
     },
     {
       "id": 7,
-      "title": "올?"
+      "title": "이거슨 테스트 보드으"
     }
   ],
   "todosState": [
@@ -111,13 +111,13 @@
     {
       "boardId": 7,
       "id": 4469,
-      "content": "되는 고지?",
+      "content": "테스트 일",
       "completed": false
     },
     {
       "boardId": 7,
       "id": 20166,
-      "content": "완전 되지?",
+      "content": "테스트 이",
       "completed": false
     },
     {
@@ -141,7 +141,7 @@
     {
       "boardId": 7,
       "id": 67192,
-      "content": "꺄악?",
+      "content": "테스트 삼",
       "completed": false
     }
   ]
