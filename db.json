@@ -119,6 +119,12 @@
       "id": 20166,
       "content": "다시?",
       "completed": false
+    },
+    {
+      "boardId": 5,
+      "id": 14697,
+      "content": "수정시 자동 포커스",
+      "completed": true
     }
   ]
 }

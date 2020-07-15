@@ -1,11 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import '../../styles/todo/TodoContent.css';
 import BoardContext from '../../context/BoardContext';
 
 const TodoContent = ({ todo }) => {
   const context = useContext(BoardContext);
   const { editTodo } = context;
+
   const [todoEdit, setTodoEdit] = useState(true);
+
+  const contentInput = useRef();
 
   const todoInputChange = () => {
     setTodoEdit(false);
@@ -18,6 +21,10 @@ const TodoContent = ({ todo }) => {
     setTodoEdit(true);
   };
 
+  useEffect(() => {
+    !todoEdit && contentInput.current.focus();
+  }, [todoEdit]);
+
   return (
     <span className="todo-content">
       {todo.completed ? (
@@ -28,7 +35,12 @@ const TodoContent = ({ todo }) => {
             {todoEdit !== false ? (
               todo.content
             ) : (
-              <input type="text" onKeyPress={editTodoContent} defaultValue={todo.content}></input>
+              <input
+                type="text"
+                onKeyPress={editTodoContent}
+                defaultValue={todo.content}
+                ref={contentInput}
+              ></input>
             )}
           </span>
         </>

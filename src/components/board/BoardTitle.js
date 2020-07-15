@@ -1,19 +1,17 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import '../../styles/board/BoardTitle.css';
 import BoardContext from '../../context/BoardContext';
 
 const BoardTitle = ({ board }) => {
   const context = useContext(BoardContext);
   const { editBoard } = context;
+
   const [titleEdit, setTitleEdit] = useState(true);
 
-  const titleInput = useRef(null);
+  const titleInput = useRef();
 
   const boardInputChange = () => {
     setTitleEdit(false);
-    if (!titleEdit) {
-      titleInput.current.focus();
-    }
   };
 
   const editBoardTitle = e => {
@@ -22,6 +20,11 @@ const BoardTitle = ({ board }) => {
     editBoard({ id: board.id, title: title !== '' ? title : board.title });
     setTitleEdit(true);
   };
+
+  useEffect(() => {
+    !titleEdit && titleInput.current.focus();
+  }, [titleEdit]);
+
   return (
     <>
       <span className="board-title" onClick={boardInputChange}>
