@@ -21,7 +21,7 @@ const TodoContent = ({ todo }) => {
   const editTodoContent = e => {
     todo.content = '';
     const content = e.target.value.trim();
-    if (e.key !== 'Enter') return;
+    if (content === '' || e.key !== 'Enter') return;
     editTodo({ id: todo.id, content: content });
     setTodoEdit(true);
   };

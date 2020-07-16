@@ -19,15 +19,17 @@ const BoardTitle = ({ board }) => {
   };
 
   const editBoardTitle = e => {
-    board.title = '';
     const title = e.target.value.trim();
-    if (e.key !== 'Enter') return;
+    if (title === '' || e.key !== 'Enter') return;
     editBoard({ id: board.id, title: title });
     setTitleEdit(true);
   };
 
   useEffect(() => {
     !titleEdit && titleInput.current.focus();
+    return () => {
+      board.title = '';
+    };
   }, [board.title, titleEdit]);
 
   return (
