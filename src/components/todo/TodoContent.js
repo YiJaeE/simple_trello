@@ -14,7 +14,11 @@ const TodoContent = ({ todo }) => {
     setTodoEdit(false);
   };
 
-  const contentOutFocus = () => {
+  const contentOutFocus = ({ target }) => {
+    todo.content = '';
+    const content = target.value.trim();
+    if (content === '') return;
+    editTodo({ id: todo.id, content: content });
     setTodoEdit(true);
   };
 
@@ -42,7 +46,7 @@ const TodoContent = ({ todo }) => {
             ) : (
               <input
                 type="text"
-                onKeyPress={editTodoContent}
+                onKeyDown={editTodoContent}
                 defaultValue={todo.content}
                 ref={contentInput}
               ></input>

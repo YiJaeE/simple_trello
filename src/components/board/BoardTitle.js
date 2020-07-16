@@ -14,7 +14,10 @@ const BoardTitle = ({ board }) => {
     setTitleEdit(false);
   };
 
-  const boardOutFocus = () => {
+  const boardOutFocus = ({ target }) => {
+    const title = target.value.trim();
+    if (title === '') return;
+    editBoard({ id: board.id, title: title });
     setTitleEdit(true);
   };
 

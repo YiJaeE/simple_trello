@@ -14,7 +14,7 @@
     },
     {
       "id": 7,
-      "title": "얘는 effect"
+      "title": "이거슨 테스트"
     }
   ],
   "todosState": [
@@ -81,7 +81,7 @@
     {
       "boardId": 6,
       "id": 510,
-      "content": "board 위치 변경",
+      "content": "board 위치 변경하기",
       "completed": false
     },
     {
