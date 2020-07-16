@@ -14,14 +14,15 @@ const BoardTitle = ({ board }) => {
     setTitleEdit(false);
   };
 
-  const boardOutFocus = ({ target }) => {
-    const title = target.value.trim();
+  const boardOutFocus = e => {
+    const title = e.target.value.trim();
     if (title === '') return;
     editBoard({ id: board.id, title: title });
     setTitleEdit(true);
   };
 
   const editBoardTitle = e => {
+    e.key === 'Escape' && boardOutFocus(e);
     const title = e.target.value.trim();
     if (title === '' || e.key !== 'Enter') return;
     editBoard({ id: board.id, title: title });
@@ -43,7 +44,7 @@ const BoardTitle = ({ board }) => {
         ) : (
           <input
             type="text"
-            onKeyPress={editBoardTitle}
+            onKeyDown={editBoardTitle}
             defaultValue={board.title}
             ref={titleInput}
           ></input>

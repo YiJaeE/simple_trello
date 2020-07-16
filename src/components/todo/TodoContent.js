@@ -24,6 +24,7 @@ const TodoContent = ({ todo }) => {
 
   const editTodoContent = e => {
     todo.content = '';
+    e.key === 'Escape' && contentOutFocus(e);
     const content = e.target.value.trim();
     if (content === '' || e.key !== 'Enter') return;
     editTodo({ id: todo.id, content: content });
