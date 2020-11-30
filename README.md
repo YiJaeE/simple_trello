@@ -11,4 +11,4 @@ Javascript
 CSS3  
 HTML5
 
-![예시화면](https://user-images.githubusercontent.com/47887717/100650143-d3624880-3386-11eb-9864-e7d27cd7eec5.png)
+![예시화면](https://user-images.githubusercontent.com/47887717/100650345-22a87900-3387-11eb-8666-571868464958.gif)
