@@ -11,4 +11,4 @@ Javascript
 CSS3  
 HTML5
 
-![예시화면](https://im2.ezgif.com/tmp/ezgif-2-7d4286e5a88c.gif)
+![예시화면](https://user-images.githubusercontent.com/47887717/100650143-d3624880-3386-11eb-9864-e7d27cd7eec5.png)
