@@ -10,3 +10,5 @@ Context Api
 Javascript  
 CSS3  
 HTML5
+
+![예시화면](https://im2.ezgif.com/tmp/ezgif-2-7d4286e5a88c.gif)
