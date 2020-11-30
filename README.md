@@ -11,4 +11,6 @@ Javascript
 CSS3  
 HTML5
 
-![예시화면](https://user-images.githubusercontent.com/47887717/100650345-22a87900-3387-11eb-8666-571868464958.gif)
+## 구현 화면
+
+![심플 트렐로 구현 화면](https://user-images.githubusercontent.com/47887717/100650345-22a87900-3387-11eb-8666-571868464958.gif)
