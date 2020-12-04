@@ -9,7 +9,8 @@ React hooks
 Context Api  
 Javascript  
 CSS3  
-HTML5
+HTML5  
+json-server
 
 ## 구현 화면
 
